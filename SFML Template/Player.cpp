@@ -127,7 +127,6 @@ void Player::Update(float dt)
 		isChppoing = true;
 		SetSide(Sides::Right);
 		sceneGame->OnChop(Sides::Right);
-		sceneGame->OnChop(Sides::Left);
 	}
 
 	if (InputMgr::GetKeyUp(sf::Keyboard::Right))
