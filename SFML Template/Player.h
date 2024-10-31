@@ -12,11 +12,13 @@ protected:
 	sf::Sprite spritePlayer;
 	sf::Sprite spriteAxe;
 	sf::Sprite spriteRip;
+	sf::Sprite spriteBind;
 
 	std::string sbIdChop = "sound/chop.wav";
 	std::string texIdPlayer = "graphics/player.png";
 	std::string texIdAxe = "graphics/axe.png";
 	std::string texIdRip = "graphics/rip.png";
+	std::string texIdBind = "graphics/bind.png";
 
 	Sides side = Sides::Right;
 
@@ -34,7 +36,7 @@ protected:
 	Scene* sceneGame = nullptr;
 
 	float stunning = 0.f;
-	const float stunTime = 3.f;
+	const float stunTime = 2.f;
 public:
 	Player(const std::string& name = "");
 	//Player(const std::string& texId, const std::string& name = "");

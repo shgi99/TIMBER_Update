@@ -8,13 +8,6 @@ Player::Player(const std::string& name) : GameObject(name)
 	sortingOrder = 0;
 }
 
-//Player::Player(const std::string& texId, const std::string& name)
-//	:GameObject(name),texIdPlayer(texId)
-//{
-//	sortingLayer = SortingLayers::Foreground;
-//	sortingOrder = 0;
-//}
-
 void Player::SetSide(Sides s)
 {
 	side = s;
@@ -32,6 +25,7 @@ void Player::SetSide(Sides s)
 	spritePlayer.setPosition(newPos);
 	spriteAxe.setPosition(newPos + localPosAxe);
 	spriteRip.setPosition(newPos + localRipAxe);
+	spriteBind.setPosition(newPos);
 }
 
 void Player::SetPosition(const sf::Vector2f& pos)
@@ -44,8 +38,6 @@ void Player::OnDie()
 {
 	isAlive = false;
 	isChppoing = false;
-
-
 }
 
 void Player::SetScale(const sf::Vector2f& scale)
@@ -60,6 +52,8 @@ void Player::SetScale(const sf::Vector2f& scale)
 	sf::Vector2f axeRip = this->scale;
 	axeRip.x = abs(axeScale.x);
 	spriteRip.setScale(axeRip);
+
+	spriteBind.setScale({1.f,1.f});
 }
 
 void Player::SetOrigin(Origins preset)
@@ -89,6 +83,8 @@ void Player::Init()
 	spriteRip.setTexture(TEXTURE_MGR.Get(texIdRip));
 	Utils::SetOrigin(spriteRip, Origins::BC);
 
+	spriteBind.setTexture(TEXTURE_MGR.Get(texIdBind));
+	Utils::SetOrigin(spriteBind, Origins::BC);
 }
 
 void Player::Reset()
@@ -98,9 +94,13 @@ void Player::Reset()
 	spritePlayer.setTexture(TEXTURE_MGR.Get(texIdPlayer));
 	spriteAxe.setTexture(TEXTURE_MGR.Get(texIdAxe));
 	spriteRip.setTexture(TEXTURE_MGR.Get(texIdRip));
+	spriteBind.setTexture(TEXTURE_MGR.Get(texIdBind), true);
+	spriteBind.setOrigin({ 75.f,192.f });
+
 	isAlive = true;
 	isChppoing = false;
 	isWin = true;
+	isStun = false;
 	SetPosition(position);
 	SetScale({ 1.f, 1.f });
 	SetSide(Sides::Right);
@@ -193,12 +193,18 @@ void Player::Update(float dt)
 
 void Player::Draw(sf::RenderWindow& window)
 {
+
+
 	if (isAlive)
 	{
 		window.draw(spritePlayer);
 		if (isChppoing)
 		{
 			window.draw(spriteAxe);
+		}	
+		if (isStun)
+		{
+			window.draw(spriteBind);
 		}
 	}
 	else
