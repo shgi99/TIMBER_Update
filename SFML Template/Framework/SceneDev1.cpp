@@ -7,6 +7,7 @@
 #include "TextGo.h"
 #include "UiScore.h"
 #include "UiTimebar.h"
+#include "UiPlayerOne.h"
 
 SceneDev1::SceneDev1() : Scene(SceneIds::Dev1)
 {
@@ -44,8 +45,8 @@ void SceneDev1::Init()
 
 	uiScore = AddGo(new UiScore("fonts/KOMIKAP_.ttf", "Ui Score"));
 	uiTimer = AddGo(new UiTimebar("Ui Timer"));
+	uiPlayerOne = AddGo(new UiPlayerOne("UI PlayerOne"));
 
-	Scene::Init();
 
 	tree->SetPosition({ 1920.f / 2, 1080.f - 200.f });
 	player->SetPosition({ 1920.f / 2, 1080.f - 200.f });
@@ -61,6 +62,10 @@ void SceneDev1::Init()
 	uiTimer->Set({ 500.f, 100.f }, sf::Color::Red);
 	uiTimer->SetOrigin(Origins::ML);
 	uiTimer->SetPosition({ 1920.f / 2.f - 250.f, 1080.f - 100.f });
+
+	uiPlayerOne->SetPosition({ player->GetPosition().x - 40.f, player->GetPosition().y - 250.f });
+	
+	Scene::Init();
 }
 
 void SceneDev1::Enter()
@@ -70,7 +75,13 @@ void SceneDev1::Enter()
 	TEXTURE_MGR.Load("graphics/tree.png");
 	TEXTURE_MGR.Load("graphics/branch.png");
 	TEXTURE_MGR.Load("graphics/log.png");
-	TEXTURE_MGR.Load("graphics/player.png");
+	TEXTURE_MGR.Load("graphics/player1.png");
+	TEXTURE_MGR.Load("graphics/player2.png");
+	TEXTURE_MGR.Load("graphics/player3.png");
+	TEXTURE_MGR.Load("graphics/player4.png");
+	TEXTURE_MGR.Load("graphics/keyW.png");
+	TEXTURE_MGR.Load("graphics/keyA.png");
+	TEXTURE_MGR.Load("graphics/keyD.png");
 	TEXTURE_MGR.Load("graphics/rip.png");
 	TEXTURE_MGR.Load("graphics/axe.png");
 	FONT_MGR.Load("fonts/KOMIKAP_.ttf");
@@ -82,7 +93,7 @@ void SceneDev1::Enter()
 	sfxTimeOut.setBuffer(SOUNDBUFFER_MGR.Get(sbIdTimeOut));
 
 	player->SetSceneGame(this);
-
+	player->SetTexIdPlayer(PLAYER_MGR.GetCharacterTexId(1));
 	Scene::Enter();
 
 	SetStatus(Status::Awake);
@@ -102,7 +113,13 @@ void SceneDev1::Exit()
 	TEXTURE_MGR.Unload("graphics/tree.png");
 	TEXTURE_MGR.Unload("graphics/branch.png");
 	TEXTURE_MGR.Unload("graphics/log.png");
-	TEXTURE_MGR.Unload("graphics/player.png");
+	TEXTURE_MGR.Unload("graphics/player1.png");
+	TEXTURE_MGR.Unload("graphics/player2.png");
+	TEXTURE_MGR.Unload("graphics/player3.png");
+	TEXTURE_MGR.Unload("graphics/player4.png");
+	TEXTURE_MGR.Unload("graphics/keyW.png");
+	TEXTURE_MGR.Unload("graphics/keyA.png");
+	TEXTURE_MGR.Unload("graphics/keyD.png");
 	TEXTURE_MGR.Unload("graphics/rip.png");
 	TEXTURE_MGR.Unload("graphics/axe.png");
 	FONT_MGR.Unload("fonts/KOMIKAP_.ttf");
@@ -188,9 +205,13 @@ void SceneDev1::SetStatus(Status newStatus)
 
 			player->Reset();
 			tree->Reset();
+			player->SetWin(false);
 		}
+		if (prevStatus == Status::Awake)
+			player->SetWin(false);
 		FRAMEWORK.SetTimeScale(1.f);
 		SetVisibleCenterMessage(false);
+		uiPlayerOne->SetActive(false);
 		break;
 	case SceneDev1::Status::GameOver:
 		FRAMEWORK.SetTimeScale(0.f);
@@ -249,7 +270,7 @@ void SceneDev1::UpdatePause(float dt)
 	}
 }
 
-void SceneDev1::OnChop(Sides side)
+void SceneDev1::OnChop(Sides side, bool is1P)
 {
 	Sides branchSide = tree->Chop(side);
 	if (player->GetSide() == branchSide)

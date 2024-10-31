@@ -2,13 +2,20 @@
 #include "SceneMgr.h"
 #include "SceneDev1.h"
 #include "SceneDev2.h"
-
-
+#include "LocalGameScene.h"
+#include "SceneTitle.h"
+#include "SceneChooseGameMode.h"
+#include "SceneChooseCharacterOne.h"
+#include "SceneChooseCharacterTwo.h"
 void SceneMgr::Init()
 {
+	scenes.push_back(new SceneTitle());
+	scenes.push_back(new SceneChooseGameMode());
+	scenes.push_back(new SceneChooseCharacterOne());
+	scenes.push_back(new SceneChooseCharacterTwo());
 	scenes.push_back(new SceneDev1());	
 	scenes.push_back(new SceneDev2());
-
+	scenes.push_back(new LocalGameScene());
 	for (auto scene : scenes)
 	{
 		scene->Init();

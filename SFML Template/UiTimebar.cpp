@@ -42,7 +42,7 @@ void UiTimebar::Reset()
 
 void UiTimebar::Draw(sf::RenderWindow& window)
 {
-	window.draw(shape);
+	window.draw(shape); 
 }
 
 void UiTimebar::Set(const sf::Vector2f size, const sf::Color& color)

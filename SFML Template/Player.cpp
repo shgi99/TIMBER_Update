@@ -25,6 +25,7 @@ void Player::SetSide(Sides s)
 	spritePlayer.setPosition(newPos);
 	spriteAxe.setPosition(newPos + localPosAxe);
 	spriteRip.setPosition(newPos + localRipAxe);
+	spriteBind.setPosition(newPos);
 }
 
 void Player::SetPosition(const sf::Vector2f& pos)
@@ -37,8 +38,6 @@ void Player::OnDie()
 {
 	isAlive = false;
 	isChppoing = false;
-
-
 }
 
 void Player::SetScale(const sf::Vector2f& scale)
@@ -53,6 +52,8 @@ void Player::SetScale(const sf::Vector2f& scale)
 	sf::Vector2f axeRip = this->scale;
 	axeRip.x = abs(axeScale.x);
 	spriteRip.setScale(axeRip);
+
+	spriteBind.setScale({1.f,1.f});
 }
 
 void Player::SetOrigin(Origins preset)
@@ -81,6 +82,9 @@ void Player::Init()
 
 	spriteRip.setTexture(TEXTURE_MGR.Get(texIdRip));
 	Utils::SetOrigin(spriteRip, Origins::BC);
+
+	spriteBind.setTexture(TEXTURE_MGR.Get(texIdBind));
+	Utils::SetOrigin(spriteBind, Origins::BC);
 }
 
 void Player::Reset()
@@ -90,9 +94,13 @@ void Player::Reset()
 	spritePlayer.setTexture(TEXTURE_MGR.Get(texIdPlayer));
 	spriteAxe.setTexture(TEXTURE_MGR.Get(texIdAxe));
 	spriteRip.setTexture(TEXTURE_MGR.Get(texIdRip));
+	spriteBind.setTexture(TEXTURE_MGR.Get(texIdBind), true);
+	spriteBind.setOrigin({ 75.f,192.f });
 
 	isAlive = true;
 	isChppoing = false;
+	isWin = true;
+	isStun = false;
 	SetPosition(position);
 	SetScale({ 1.f, 1.f });
 	SetSide(Sides::Right);
@@ -106,44 +114,97 @@ void Player::Release()
 
 void Player::Update(float dt)
 {
-	if (!isAlive)
+	if (isStun)
+	{
+		stunning += dt;
+		if (stunning >= stunTime)
+		{
+			isStun = false;
+			stunning = 0.f;
+		}
+	}
+	if (!isAlive || isWin || isStun)
 		return;
-
-	if (InputMgr::GetKeyDown(sf::Keyboard::Left))
+	if(is1P)
 	{
-		isChppoing = true;
-		SetSide(Sides::Left);
-		sceneGame->OnChop(Sides::Left);
-		sfxChop.play();
+		if (isFever && InputMgr::GetKeyDown(sf::Keyboard::W))
+		{
+			DoSkill();
+		}
+		if (InputMgr::GetKeyDown(sf::Keyboard::A))
+		{
+			isChppoing = true;
+			SetSide(Sides::Left);
+			sceneGame->OnChop(Sides::Left,is1P);
+			sfxChop.play();
+		}
+
+		if (InputMgr::GetKeyUp(sf::Keyboard::A))
+		{
+			isChppoing = false;
+		}
+
+		if (InputMgr::GetKeyDown(sf::Keyboard::D))
+		{
+			isChppoing = true;
+			SetSide(Sides::Right);
+			sceneGame->OnChop(Sides::Right, is1P);
+			sfxChop.play();
+		}
+
+		if (InputMgr::GetKeyUp(sf::Keyboard::D))
+		{
+			isChppoing = false;
+		}
 	}
-
-	if (InputMgr::GetKeyUp(sf::Keyboard::Left))
+	else
 	{
-		isChppoing = false;
-	}
+		if (isFever && InputMgr::GetKeyDown(sf::Keyboard::Up))
+		{
+			DoSkill();
+		}
+		if (InputMgr::GetKeyDown(sf::Keyboard::Left))
+		{
+			isChppoing = true;
+			SetSide(Sides::Left);
+			sceneGame->OnChop(Sides::Left, is1P);
+			sfxChop.play();
+		}
 
-	if (InputMgr::GetKeyDown(sf::Keyboard::Right))
-	{
-		isChppoing = true;
-		SetSide(Sides::Right);
-		sceneGame->OnChop(Sides::Right);
-		sceneGame->OnChop(Sides::Left);
-	}
+		if (InputMgr::GetKeyUp(sf::Keyboard::Left))
+		{
+			isChppoing = false;
+		}
 
-	if (InputMgr::GetKeyUp(sf::Keyboard::Right))
-	{
-		isChppoing = false;
+		if (InputMgr::GetKeyDown(sf::Keyboard::Right))
+		{
+			isChppoing = true;
+			SetSide(Sides::Right);
+			sceneGame->OnChop(Sides::Right, is1P);
+			sfxChop.play();
+		}
+
+		if (InputMgr::GetKeyUp(sf::Keyboard::Right))
+		{
+			isChppoing = false;
+		}
 	}
 }
 
 void Player::Draw(sf::RenderWindow& window)
 {
+
+
 	if (isAlive)
 	{
 		window.draw(spritePlayer);
 		if (isChppoing)
 		{
 			window.draw(spriteAxe);
+		}	
+		if (isStun)
+		{
+			window.draw(spriteBind);
 		}
 	}
 	else
@@ -152,7 +213,18 @@ void Player::Draw(sf::RenderWindow& window)
 	}
 }
 
-void Player::SetSceneGame(SceneDev1* scene)
+void Player::SetSceneGame(Scene* scene)
 {
 	sceneGame = scene;
+}
+
+void Player::DoSkill()
+{
+	sceneGame->DoSkill(is1P);
+}
+
+void Player::SetStun(bool isStun)
+{
+	this->isStun = isStun;
+	stunning = 0.f;
 }

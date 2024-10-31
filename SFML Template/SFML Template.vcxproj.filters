@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="Branch.cpp" />
+    <ClCompile Include="CloudGo.cpp" />
+    <ClCompile Include="EffectLog.cpp" />
+    <ClCompile Include="Framework\Framework.cpp" />
+    <ClCompile Include="Framework\GameObject.cpp" />
+    <ClCompile Include="Framework\InputMgr.cpp" />
+    <ClCompile Include="LocalGameScene.cpp" />
+    <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Framework\Scene.cpp" />
+    <ClCompile Include="Framework\SceneDev1.cpp" />
+    <ClCompile Include="Framework\SceneDev2.cpp" />
+    <ClCompile Include="Framework\SceneMgr.cpp" />
+    <ClCompile Include="Framework\main.cpp" />
+    <ClCompile Include="Framework\SpriteGo.cpp" />
+    <ClCompile Include="Framework\stdafx.cpp" />
+    <ClCompile Include="Framework\TextGo.cpp" />
+    <ClCompile Include="PlayerMgr.cpp" />
+    <ClCompile Include="SceneChooseCharacterOne.cpp" />
+    <ClCompile Include="SceneChooseCharacterTwo.cpp" />
+    <ClCompile Include="SceneChooseGameMode.cpp" />
+    <ClCompile Include="SceneTitle.cpp" />
+    <ClCompile Include="Tree.cpp" />
+    <ClCompile Include="UiScore.cpp" />
+    <ClCompile Include="UiSkillBar.cpp" />
+    <ClCompile Include="UiTimebar.cpp" />
+    <ClCompile Include="Framework\Utils.cpp" />
+    <ClCompile Include="UiPlayerOne.cpp" />
+    <ClCompile Include="UiPlayerTwo.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Branch.h" />
+    <ClInclude Include="CloudGo.h" />
+    <ClInclude Include="Framework\Defines.h" />
+    <ClInclude Include="EffectLog.h" />
+    <ClInclude Include="Framework\Framework.h" />
+    <ClInclude Include="Framework\GameObject.h" />
+    <ClInclude Include="Framework\InputMgr.h" />
+    <ClInclude Include="Framework\ObjectPool.h" />
+    <ClInclude Include="LocalGameScene.h" />
+    <ClInclude Include="Player.h" />
+    <ClInclude Include="Framework\ResourceMgr.h" />
+    <ClInclude Include="Framework\Scene.h" />
+    <ClInclude Include="Framework\SceneDev1.h" />
+    <ClInclude Include="Framework\SceneDev2.h" />
+    <ClInclude Include="Framework\SceneMgr.h" />
+    <ClInclude Include="Framework\Singleton.h" />
+    <ClInclude Include="Framework\SpriteGo.h" />
+    <ClInclude Include="Framework\stdafx.h" />
+    <ClInclude Include="Framework\TextGo.h" />
+    <ClInclude Include="PlayerMgr.h" />
+    <ClInclude Include="SceneChooseCharacterOne.h" />
+    <ClInclude Include="SceneChooseCharacterTwo.h" />
+    <ClInclude Include="SceneChooseGameMode.h" />
+    <ClInclude Include="SceneTitle.h" />
+    <ClInclude Include="Tree.h" />
+    <ClInclude Include="UiScore.h" />
+    <ClInclude Include="UiSkillBar.h" />
+    <ClInclude Include="UiTimebar.h" />
+    <ClInclude Include="Framework\Utils.h" />
+    <ClInclude Include="UiPlayerOne.h" />
+    <ClInclude Include="UiPlayerTwo.h" />
+  </ItemGroup>
+</Project>
