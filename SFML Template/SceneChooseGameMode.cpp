@@ -40,7 +40,7 @@ void SceneChooseGameMode::Init()
 	GameObject* CharacterOne[2];
 	for (int i = 0; i < _countof(CharacterOne); i++)
 	{
-		CharacterOne[i] = AddGo(new SpriteGo("graphics/player.png", "Player"));
+		CharacterOne[i] = AddGo(new SpriteGo("graphics/player1.png", "Player"));
 		CharacterOne[i]->SetOrigin(Origins::BC);
 	}
 	CharacterOne[0]->SetPosition({ 1920.f / 2 - 300.f, 1080.f / 2 + 100.f });
@@ -120,7 +120,7 @@ void SceneChooseGameMode::Update(float dt)
 void SceneChooseGameMode::Enter()
 {
 	TEXTURE_MGR.Load("graphics/title.png");
-	TEXTURE_MGR.Load("graphics/player.png");
+	TEXTURE_MGR.Load("graphics/player1.png");
 	TEXTURE_MGR.Load("graphics/player2.png");
 	FONT_MGR.Load("fonts/KOMIKAP_.ttf");
 	Scene::Enter();
@@ -129,7 +129,7 @@ void SceneChooseGameMode::Enter()
 void SceneChooseGameMode::Exit()
 {
 	TEXTURE_MGR.Unload("graphics/title.png");
-	TEXTURE_MGR.Unload("graphics/player.png");
+	TEXTURE_MGR.Unload("graphics/player1.png");
 	TEXTURE_MGR.Unload("graphics/player2.png");
 	FONT_MGR.Unload("fonts/KOMIKAP_.ttf");
 	Scene::Exit();

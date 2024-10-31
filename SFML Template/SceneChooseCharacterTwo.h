@@ -1,17 +1,20 @@
 #pragma once
 #include "Scene.h"
 class TextGo;
-class SceneChooseCharacterOne :
-    public Scene
+class SceneChooseCharacterTwo :
+	public Scene
 {
 protected:
-	TextGo* arrow = nullptr;
-	int arrowIdx = 0;
+	TextGo* arrows[2];
+	int arrowOneIdx = 0;
+	int arrowTwoIdx = 0;
+	bool isChoosePlayerOne = false;
+	bool isChoosePlayerTwo = false;
 	GameObject* texCharacter[4];
 	std::vector<std::pair<sf::Vector2f, std::string>> posTexId;
 public:
-	SceneChooseCharacterOne();
-	virtual ~SceneChooseCharacterOne() = default;
+	SceneChooseCharacterTwo();
+	virtual ~SceneChooseCharacterTwo() = default;
 
 	void Init() override;
 	void Enter() override;

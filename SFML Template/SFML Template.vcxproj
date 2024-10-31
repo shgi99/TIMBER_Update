@@ -147,6 +147,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Branch.cpp" />
+    <ClCompile Include="CharacterMgr.cpp" />
     <ClCompile Include="CloudGo.cpp" />
     <ClCompile Include="EffectLog.cpp" />
     <ClCompile Include="Framework\Framework.cpp" />
@@ -164,6 +165,7 @@
     </ClCompile>
     <ClCompile Include="Framework\TextGo.cpp" />
     <ClCompile Include="SceneChooseCharacterOne.cpp" />
+    <ClCompile Include="SceneChooseCharacterTwo.cpp" />
     <ClCompile Include="SceneChooseGameMode.cpp" />
     <ClCompile Include="SceneTitle.cpp" />
     <ClCompile Include="Tree.cpp" />
@@ -173,6 +175,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Branch.h" />
+    <ClInclude Include="CharacterMgr.h" />
     <ClInclude Include="CloudGo.h" />
     <ClInclude Include="Framework\Defines.h" />
     <ClInclude Include="EffectLog.h" />
@@ -191,6 +194,7 @@
     <ClInclude Include="Framework\stdafx.h" />
     <ClInclude Include="Framework\TextGo.h" />
     <ClInclude Include="SceneChooseCharacterOne.h" />
+    <ClInclude Include="SceneChooseCharacterTwo.h" />
     <ClInclude Include="SceneChooseGameMode.h" />
     <ClInclude Include="SceneTitle.h" />
     <ClInclude Include="Tree.h" />

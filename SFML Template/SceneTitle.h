@@ -12,6 +12,7 @@ public:
 	void Exit() override;
 
 	void Update(float dt) override;
+	void Release() override;
 	void Draw(sf::RenderWindow& window) override;
 };
 

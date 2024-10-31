@@ -51,6 +51,11 @@ void SceneTitle::Update(float dt)
 	}
 }
 
+void SceneTitle::Release()
+{
+	Scene::Release();
+}
+
 void SceneTitle::Draw(sf::RenderWindow& window)
 {
 	Scene::Draw(window);

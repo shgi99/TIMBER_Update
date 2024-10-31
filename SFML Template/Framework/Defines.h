@@ -14,9 +14,9 @@ enum class SceneIds
 	Title,
 	ChooseGameMode,
 	ChooseCharacter1P,
+	ChooseCharacter2P,
 	Dev1,
 	Dev2,
-	ChooseCharacter2P,
 	Count,
 };
 
