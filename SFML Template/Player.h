@@ -23,7 +23,6 @@ protected:
 	sf::Vector2f localPosPlayer[3] = { { -300.f, 0.f },  { 300.f, 0.f },  { 0.f, 0.f } };
 	sf::Vector2f localPosAxe = { 0.f, -70.f };
 	sf::Vector2f localRipAxe = { 0.f, 0.f };
-
 	sf::Vector2f originAxe = { -65.f, 0.f };
 
 	bool isAlive = true;
@@ -62,6 +61,6 @@ public:
 	void SetWin(bool isWin) { this->isWin = isWin; }
 	void SetFever(bool isFever) { this->isFever = isFever; }
 	void DoSkill();
-	void SetStun(bool isStun) { this->isStun = isStun; }
+	void SetStun(bool isStun);
 };
 

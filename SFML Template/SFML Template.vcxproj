@@ -166,6 +166,7 @@
     <ClCompile Include="Framework\TextGo.cpp" />
     <ClCompile Include="Tree.cpp" />
     <ClCompile Include="UiScore.cpp" />
+    <ClCompile Include="UiSkillBar.cpp" />
     <ClCompile Include="UiTimebar.cpp" />
     <ClCompile Include="Framework\Utils.cpp" />
   </ItemGroup>
@@ -191,6 +192,7 @@
     <ClInclude Include="Framework\TextGo.h" />
     <ClInclude Include="Tree.h" />
     <ClInclude Include="UiScore.h" />
+    <ClInclude Include="UiSkillBar.h" />
     <ClInclude Include="UiTimebar.h" />
     <ClInclude Include="Framework\Utils.h" />
   </ItemGroup>

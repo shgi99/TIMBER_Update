@@ -88,6 +88,7 @@ void Player::Init()
 
 	spriteRip.setTexture(TEXTURE_MGR.Get(texIdRip));
 	Utils::SetOrigin(spriteRip, Origins::BC);
+
 }
 
 void Player::Reset()
@@ -97,10 +98,9 @@ void Player::Reset()
 	spritePlayer.setTexture(TEXTURE_MGR.Get(texIdPlayer));
 	spriteAxe.setTexture(TEXTURE_MGR.Get(texIdAxe));
 	spriteRip.setTexture(TEXTURE_MGR.Get(texIdRip));
-
 	isAlive = true;
 	isChppoing = false;
-	isWin = false;
+	isWin = true;
 	SetPosition(position);
 	SetScale({ 1.f, 1.f });
 	SetSide(Sides::Right);
@@ -114,7 +114,16 @@ void Player::Release()
 
 void Player::Update(float dt)
 {
-	if (!isAlive || isWin)
+	if (isStun)
+	{
+		stunning += dt;
+		if (stunning >= stunTime)
+		{
+			isStun = false;
+			stunning = 0.f;
+		}
+	}
+	if (!isAlive || isWin || isStun)
 		return;
 	if(is1P)
 	{
@@ -206,4 +215,10 @@ void Player::SetSceneGame(Scene* scene)
 void Player::DoSkill()
 {
 	sceneGame->DoSkill(is1P);
+}
+
+void Player::SetStun(bool isStun)
+{
+	this->isStun = isStun;
+	stunning = 0.f;
 }
