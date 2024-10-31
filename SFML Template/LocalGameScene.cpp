@@ -27,7 +27,6 @@ void LocalGameScene::Init()
 		cloud->sortingLayer = SortingLayers::Background;
 		cloud->sortingOrder = 0;
 	}
-
 	SOUNDBUFFER_MGR.Load(sbIdDeath);
 	SOUNDBUFFER_MGR.Load(sbIdTimeOut);
 	for(int i = 0 ; i < playerNum ; i++)
@@ -45,7 +44,7 @@ void LocalGameScene::Init()
 		stun.push_back(AddGo(new SpriteGo("graphics/stun.png")));
 		stun[i]->SetActive(false);
 		stun[i]->SetOrigin({-30.f,0.f});
-		stun[i]->SetScale({ 2.f,2.f });
+		stun[i]->SetScale({ 2.5f,2.5f });
 		stun[i]->SetPosition({ 1920.f / 2.f, 230.f });
 		stun[i]->sortingLayer = SortingLayers::UI;
 	}
@@ -87,6 +86,7 @@ void LocalGameScene::Enter()
 	TEXTURE_MGR.Load("graphics/rip.png");
 	TEXTURE_MGR.Load("graphics/axe.png");
 	TEXTURE_MGR.Load("graphics/stun.png");
+	TEXTURE_MGR.Load("graphics/bind.png");
 	FONT_MGR.Load("fonts/KOMIKAP_.ttf");
 	SOUNDBUFFER_MGR.Load("sound/chop.wav");
 	SOUNDBUFFER_MGR.Load(sbIdDeath);
@@ -129,6 +129,7 @@ void LocalGameScene::Exit()
 	TEXTURE_MGR.Unload("graphics/rip.png");
 	TEXTURE_MGR.Unload("graphics/axe.png");
 	TEXTURE_MGR.Unload("graphics/stun.png");
+	TEXTURE_MGR.Unload("graphics/bind.png");
 	FONT_MGR.Unload("fonts/KOMIKAP_.ttf");
 	SOUNDBUFFER_MGR.Unload("sound/chop.wav");
 	SOUNDBUFFER_MGR.Unload("sound/death.wav");

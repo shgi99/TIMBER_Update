@@ -46,7 +46,7 @@ protected:
 	std::vector<UiSkillBar*> skillBar;
 	std::vector<SpriteGo*> stun;
 	float stunning[2] = { 0.f, 0.f };
-	const float stunTime = 3.f;
+	const float stunTime = 2.f;
 public:
 	LocalGameScene();
 	~LocalGameScene() = default;
