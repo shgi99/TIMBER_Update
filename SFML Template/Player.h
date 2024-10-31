@@ -28,11 +28,17 @@ protected:
 
 	bool isAlive = true;
 	bool isChppoing = false;
+	bool is1P = true;
+	bool isWin = false;
+	bool isFever = false;
+	bool isStun = false;
+	Scene* sceneGame = nullptr;
 
-	SceneDev1* sceneGame = nullptr;
-
+	float stunning = 0.f;
+	const float stunTime = 3.f;
 public:
 	Player(const std::string& name = "");
+	//Player(const std::string& texId, const std::string& name = "");
 	virtual ~Player() = default;
 
 	Sides GetSide() const { return side; }
@@ -51,6 +57,11 @@ public:
 	void Update(float dt) override;
 	void Draw(sf::RenderWindow& window)  override;
 
-	void SetSceneGame(SceneDev1* scene);
+	void SetSceneGame(Scene* scene);
+	void SetFlag(bool is1P) { this->is1P = is1P; }
+	void SetWin(bool isWin) { this->isWin = isWin; }
+	void SetFever(bool isFever) { this->isFever = isFever; }
+	void DoSkill();
+	void SetStun(bool isStun) { this->isStun = isStun; }
 };
 

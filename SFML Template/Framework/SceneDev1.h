@@ -61,7 +61,7 @@ public:
 	void UpdateGameOver(float dt);
 	void UpdatePause(float dt);
 
-	void OnChop(Sides side);
+	void OnChop(Sides side, bool is1P) override;
 
 };
 

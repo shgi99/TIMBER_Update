@@ -38,6 +38,7 @@ public:
 
 	void ApplyAddGo();
 	void ApplyRemoveGO();
-
+	virtual void OnChop(Sides side, bool is1P) {}
+	virtual void DoSkill(bool is1P) {}
 };
 

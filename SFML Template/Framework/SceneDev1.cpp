@@ -249,7 +249,7 @@ void SceneDev1::UpdatePause(float dt)
 	}
 }
 
-void SceneDev1::OnChop(Sides side)
+void SceneDev1::OnChop(Sides side, bool is1P)
 {
 	Sides branchSide = tree->Chop(side);
 	if (player->GetSide() == branchSide)

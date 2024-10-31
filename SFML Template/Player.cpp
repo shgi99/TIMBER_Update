@@ -8,6 +8,13 @@ Player::Player(const std::string& name) : GameObject(name)
 	sortingOrder = 0;
 }
 
+//Player::Player(const std::string& texId, const std::string& name)
+//	:GameObject(name),texIdPlayer(texId)
+//{
+//	sortingLayer = SortingLayers::Foreground;
+//	sortingOrder = 0;
+//}
+
 void Player::SetSide(Sides s)
 {
 	side = s;
@@ -93,6 +100,7 @@ void Player::Reset()
 
 	isAlive = true;
 	isChppoing = false;
+	isWin = false;
 	SetPosition(position);
 	SetScale({ 1.f, 1.f });
 	SetSide(Sides::Right);
@@ -106,33 +114,71 @@ void Player::Release()
 
 void Player::Update(float dt)
 {
-	if (!isAlive)
+	if (!isAlive || isWin)
 		return;
-
-	if (InputMgr::GetKeyDown(sf::Keyboard::Left))
+	if(is1P)
 	{
-		isChppoing = true;
-		SetSide(Sides::Left);
-		sceneGame->OnChop(Sides::Left);
-		sfxChop.play();
+		if (isFever && InputMgr::GetKeyDown(sf::Keyboard::W))
+		{
+			DoSkill();
+		}
+		if (InputMgr::GetKeyDown(sf::Keyboard::A))
+		{
+			isChppoing = true;
+			SetSide(Sides::Left);
+			sceneGame->OnChop(Sides::Left,is1P);
+			sfxChop.play();
+		}
+
+		if (InputMgr::GetKeyUp(sf::Keyboard::A))
+		{
+			isChppoing = false;
+		}
+
+		if (InputMgr::GetKeyDown(sf::Keyboard::D))
+		{
+			isChppoing = true;
+			SetSide(Sides::Right);
+			sceneGame->OnChop(Sides::Right, is1P);
+			sfxChop.play();
+		}
+
+		if (InputMgr::GetKeyUp(sf::Keyboard::D))
+		{
+			isChppoing = false;
+		}
 	}
-
-	if (InputMgr::GetKeyUp(sf::Keyboard::Left))
+	else
 	{
-		isChppoing = false;
-	}
+		if (isFever && InputMgr::GetKeyDown(sf::Keyboard::Up))
+		{
+			DoSkill();
+		}
+		if (InputMgr::GetKeyDown(sf::Keyboard::Left))
+		{
+			isChppoing = true;
+			SetSide(Sides::Left);
+			sceneGame->OnChop(Sides::Left, is1P);
+			sfxChop.play();
+		}
 
-	if (InputMgr::GetKeyDown(sf::Keyboard::Right))
-	{
-		isChppoing = true;
-		SetSide(Sides::Right);
-		sceneGame->OnChop(Sides::Right);
-		sceneGame->OnChop(Sides::Left);
-	}
+		if (InputMgr::GetKeyUp(sf::Keyboard::Left))
+		{
+			isChppoing = false;
+		}
 
-	if (InputMgr::GetKeyUp(sf::Keyboard::Right))
-	{
-		isChppoing = false;
+		if (InputMgr::GetKeyDown(sf::Keyboard::Right))
+		{
+			isChppoing = true;
+			SetSide(Sides::Right);
+			sceneGame->OnChop(Sides::Right, is1P);
+			sfxChop.play();
+		}
+
+		if (InputMgr::GetKeyUp(sf::Keyboard::Right))
+		{
+			isChppoing = false;
+		}
 	}
 }
 
@@ -152,7 +198,12 @@ void Player::Draw(sf::RenderWindow& window)
 	}
 }
 
-void Player::SetSceneGame(SceneDev1* scene)
+void Player::SetSceneGame(Scene* scene)
 {
 	sceneGame = scene;
+}
+
+void Player::DoSkill()
+{
+	sceneGame->DoSkill(is1P);
 }
