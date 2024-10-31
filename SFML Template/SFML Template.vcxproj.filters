@@ -72,10 +72,26 @@
     <ClCompile Include="UiTimebar.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+<<<<<<< HEAD
     <ClCompile Include="LocalGameScene.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="UiSkillBar.cpp">
+=======
+    <ClCompile Include="SceneTitle.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneChooseGameMode.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneChooseCharacterOne.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="CharacterMgr.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneChooseCharacterTwo.cpp">
+>>>>>>> Dev.Seol
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
@@ -146,10 +162,26 @@
     <ClInclude Include="UiTimebar.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+<<<<<<< HEAD
     <ClInclude Include="LocalGameScene.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="UiSkillBar.h">
+=======
+    <ClInclude Include="SceneTitle.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneChooseGameMode.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneChooseCharacterOne.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="CharacterMgr.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneChooseCharacterTwo.h">
+>>>>>>> Dev.Seol
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
