@@ -81,10 +81,10 @@
     <ClCompile Include="SceneChooseCharacterOne.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="CharacterMgr.cpp">
+    <ClCompile Include="SceneChooseCharacterTwo.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="SceneChooseCharacterTwo.cpp">
+    <ClCompile Include="PlayerMgr.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
@@ -164,10 +164,10 @@
     <ClInclude Include="SceneChooseCharacterOne.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="CharacterMgr.h">
+    <ClInclude Include="SceneChooseCharacterTwo.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="SceneChooseCharacterTwo.h">
+    <ClInclude Include="PlayerMgr.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
