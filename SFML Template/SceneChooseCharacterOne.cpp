@@ -102,6 +102,11 @@ void SceneChooseCharacterOne::Update(float dt)
 		PLAYER_MGR.SetCharacterTexId(1, posTexId[arrowIdx].second);
 		SCENE_MGR.ChangeScene(SceneIds::Dev1);
 	}
+
+	if (InputMgr::GetKeyDown(sf::Keyboard::Escape))
+	{
+		SCENE_MGR.ChangeScene(SceneIds::ChooseGameMode);
+	}
 }
 
 void SceneChooseCharacterOne::Draw(sf::RenderWindow& window)

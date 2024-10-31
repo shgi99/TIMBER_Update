@@ -170,6 +170,8 @@
     <ClCompile Include="SceneChooseGameMode.cpp" />
     <ClCompile Include="SceneTitle.cpp" />
     <ClCompile Include="Tree.cpp" />
+    <ClCompile Include="UiPlayerOne.cpp" />
+    <ClCompile Include="UiPlayerTwo.cpp" />
     <ClCompile Include="UiScore.cpp" />
     <ClCompile Include="UiSkillBar.cpp" />
     <ClCompile Include="UiTimebar.cpp" />
@@ -201,6 +203,8 @@
     <ClInclude Include="SceneChooseGameMode.h" />
     <ClInclude Include="SceneTitle.h" />
     <ClInclude Include="Tree.h" />
+    <ClInclude Include="UiPlayerOne.h" />
+    <ClInclude Include="UiPlayerTwo.h" />
     <ClInclude Include="UiScore.h" />
     <ClInclude Include="UiSkillBar.h" />
     <ClInclude Include="UiTimebar.h" />

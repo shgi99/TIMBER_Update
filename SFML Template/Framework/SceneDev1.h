@@ -6,7 +6,7 @@ class Player;
 class TextGo;
 class UiScore;
 class UiTimebar;
-
+class UiPlayerOne;
 class SceneDev1 : public Scene
 {
 public:
@@ -27,7 +27,7 @@ protected:
 	TextGo* centerMsg;
 	UiScore* uiScore;
 	UiTimebar* uiTimer;
-
+	UiPlayerOne* uiPlayerOne;
 	int score = 0;
 	float timer = 0.f;
 	float gameTime = 5.f;

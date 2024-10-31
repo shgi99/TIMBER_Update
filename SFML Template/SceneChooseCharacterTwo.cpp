@@ -154,6 +154,10 @@ void SceneChooseCharacterTwo::Update(float dt)
 			arrows[1]->text.setFillColor(sf::Color(139, 69, 19));
 		}
 	}
+	if (InputMgr::GetKeyDown(sf::Keyboard::Escape))
+	{
+		SCENE_MGR.ChangeScene(SceneIds::ChooseGameMode);
+	}
 	if (isChoosePlayerOne && isChoosePlayerTwo)
 	{
 		// æ¿ √º¿Œ¡ˆ

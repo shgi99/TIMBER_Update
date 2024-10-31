@@ -8,6 +8,8 @@
 #include "UiScore.h"
 #include "UiTimebar.h"
 #include "UiSkillBar.h"
+#include "UiPlayerOne.h"
+#include "UiPlayerTwo.h"
 LocalGameScene::LocalGameScene() : Scene(SceneIds::Dev1)
 {
 }
@@ -49,7 +51,11 @@ void LocalGameScene::Init()
 		stun[i]->SetPosition({ 1920.f / 2.f, 230.f });
 		stun[i]->sortingLayer = SortingLayers::UI;
 	}
+	uiPlayerOne = AddGo(new UiPlayerOne("UI Player One"));
+	uiPlayerTwo = AddGo(new UiPlayerTwo("UI Player Two"));
 
+	uiPlayerOne->SetPosition({ players[0]->GetPosition().x - 40.f, players[0]->GetPosition().y - 250.f});
+	uiPlayerTwo->SetPosition({ players[1]->GetPosition().x - 40.f, players[1]->GetPosition().y - 250.f});
 	uiTimer[(int)Players::Player1]->SetScale({ -1.f,1.f });
 	skillBar[(int)Players::Player1]->SetScale({ -1.f,1.f });
 	stun[(int)Players::Player1]->SetScale({ -2.f,2.f });
@@ -62,13 +68,14 @@ void LocalGameScene::Init()
 	centerMsg = AddGo(new TextGo("fonts/KOMIKAP_.ttf", "Center Message"));
 	centerMsg->sortingLayer = SortingLayers::UI;
 
-	
-
+	uiPlayerOne->SetPosition({ players[(int)Players::Player1]->GetPosition().x - 40.f, players[(int)Players::Player1]->GetPosition().y - 250.f });
+	uiPlayerTwo->SetPosition({ players[(int)Players::Player2]->GetPosition().x - 15.f, players[(int)Players::Player2]->GetPosition().y - 250.f });
 	Scene::Init();
 
-
 	centerMsg->text.setCharacterSize(100);
-	centerMsg->text.setFillColor(sf::Color::White);
+	centerMsg->text.setFillColor(sf::Color(50, 205, 50));
+	centerMsg->text.setOutlineColor(sf::Color(139, 69, 19));
+	centerMsg->text.setOutlineThickness(10);
 	centerMsg->SetPosition({ 1920.f / 2.f, 1080.f / 2.f });
 
 }
@@ -84,6 +91,12 @@ void LocalGameScene::Enter()
 	TEXTURE_MGR.Load("graphics/player2.png");
 	TEXTURE_MGR.Load("graphics/player3.png");
 	TEXTURE_MGR.Load("graphics/player4.png");
+	TEXTURE_MGR.Load("graphics/keyW.png");
+	TEXTURE_MGR.Load("graphics/keyA.png");
+	TEXTURE_MGR.Load("graphics/keyD.png");
+	TEXTURE_MGR.Load("graphics/keyUp.png");
+	TEXTURE_MGR.Load("graphics/keyLeft.png");
+	TEXTURE_MGR.Load("graphics/keyRight.png");
 	TEXTURE_MGR.Load("graphics/rip.png");
 	TEXTURE_MGR.Load("graphics/axe.png");
 	TEXTURE_MGR.Load("graphics/stun.png");
@@ -126,6 +139,12 @@ void LocalGameScene::Exit()
 	TEXTURE_MGR.Unload("graphics/player2.png");
 	TEXTURE_MGR.Unload("graphics/player3.png");
 	TEXTURE_MGR.Unload("graphics/player4.png");
+	TEXTURE_MGR.Unload("graphics/keyW.png");
+	TEXTURE_MGR.Unload("graphics/keyA.png");
+	TEXTURE_MGR.Unload("graphics/keyD.png");
+	TEXTURE_MGR.Unload("graphics/keyUp.png");
+	TEXTURE_MGR.Unload("graphics/keyLeft.png");
+	TEXTURE_MGR.Unload("graphics/keyRight.png");
 	TEXTURE_MGR.Unload("graphics/rip.png");
 	TEXTURE_MGR.Unload("graphics/axe.png");
 	TEXTURE_MGR.Unload("graphics/stun.png");
@@ -218,6 +237,8 @@ void LocalGameScene::SetStatus(Status newStatus)
 		}
 		FRAMEWORK.SetTimeScale(1.f);
 		SetVisibleCenterMessage(false);
+		uiPlayerOne->SetActive(false);
+		uiPlayerTwo->SetActive(false);
 		break;
 	case LocalGameScene::Status::GameOver:
 		FRAMEWORK.SetTimeScale(0.f);

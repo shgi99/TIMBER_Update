@@ -7,6 +7,8 @@ class UiScore;
 class UiTimebar;
 class UiSkillBar;
 class SpriteGo;
+class UiPlayerOne;
+class UiPlayerTwo;
 class LocalGameScene :
     public Scene
 {
@@ -28,6 +30,8 @@ protected:
 	const int playerNum = 2;
 	std::vector<Tree*> trees;
 	std::vector<Player*> players;
+	UiPlayerOne* uiPlayerOne;
+	UiPlayerTwo* uiPlayerTwo;
 	float timer[2] = { 0.f,0.f };
 
 	TextGo* centerMsg;
