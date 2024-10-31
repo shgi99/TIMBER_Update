@@ -87,10 +87,14 @@
     <ClCompile Include="SceneChooseCharacterOne.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="CharacterMgr.cpp">
+    <ClCompile Include="SceneChooseCharacterTwo.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+<<<<<<< HEAD
     <ClCompile Include="SceneChooseCharacterTwo.cpp">
+>>>>>>> Dev.Seol
+=======
+    <ClCompile Include="PlayerMgr.cpp">
 >>>>>>> Dev.Seol
       <Filter>소스 파일</Filter>
     </ClCompile>
@@ -177,10 +181,14 @@
     <ClInclude Include="SceneChooseCharacterOne.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="CharacterMgr.h">
+    <ClInclude Include="SceneChooseCharacterTwo.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+<<<<<<< HEAD
     <ClInclude Include="SceneChooseCharacterTwo.h">
+>>>>>>> Dev.Seol
+=======
+    <ClInclude Include="PlayerMgr.h">
 >>>>>>> Dev.Seol
       <Filter>헤더 파일</Filter>
     </ClInclude>

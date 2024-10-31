@@ -17,4 +17,3 @@ public:
 };
 
 #define PLAYER_MGR (PlayerMgr::Instance())
-
