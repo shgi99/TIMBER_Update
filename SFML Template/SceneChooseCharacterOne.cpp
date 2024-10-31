@@ -100,7 +100,7 @@ void SceneChooseCharacterOne::Update(float dt)
 	if (InputMgr::GetKeyDown(sf::Keyboard::Enter))
 	{
 		PLAYER_MGR.SetCharacterTexId(1, posTexId[arrowIdx].second);
-		//æ¿ √º¿Œ¡ˆ
+		SCENE_MGR.ChangeScene(SceneIds::Dev1);
 	}
 }
 

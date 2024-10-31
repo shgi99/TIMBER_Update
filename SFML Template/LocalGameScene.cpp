@@ -80,7 +80,10 @@ void LocalGameScene::Enter()
 	TEXTURE_MGR.Load("graphics/tree.png");
 	TEXTURE_MGR.Load("graphics/branch.png");
 	TEXTURE_MGR.Load("graphics/log.png");
-	TEXTURE_MGR.Load("graphics/player.png");
+	TEXTURE_MGR.Load("graphics/player1.png");
+	TEXTURE_MGR.Load("graphics/player2.png");
+	TEXTURE_MGR.Load("graphics/player3.png");
+	TEXTURE_MGR.Load("graphics/player4.png");
 	TEXTURE_MGR.Load("graphics/rip.png");
 	TEXTURE_MGR.Load("graphics/axe.png");
 	TEXTURE_MGR.Load("graphics/stun.png");
@@ -96,6 +99,7 @@ void LocalGameScene::Enter()
 	{
 		players[i]->SetSceneGame(this);
 		stunning[i] = stunTime;
+		players[i]->SetTexIdPlayer(PLAYER_MGR.GetCharacterTexId(i + 1));
 	}
 	Scene::Enter();
 
@@ -118,7 +122,10 @@ void LocalGameScene::Exit()
 	TEXTURE_MGR.Unload("graphics/tree.png");
 	TEXTURE_MGR.Unload("graphics/branch.png");
 	TEXTURE_MGR.Unload("graphics/log.png");
-	TEXTURE_MGR.Unload("graphics/player.png");
+	TEXTURE_MGR.Unload("graphics/player1.png");
+	TEXTURE_MGR.Unload("graphics/player2.png");
+	TEXTURE_MGR.Unload("graphics/player3.png");
+	TEXTURE_MGR.Unload("graphics/player4.png");
 	TEXTURE_MGR.Unload("graphics/rip.png");
 	TEXTURE_MGR.Unload("graphics/axe.png");
 	TEXTURE_MGR.Unload("graphics/stun.png");

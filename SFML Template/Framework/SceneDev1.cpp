@@ -70,7 +70,10 @@ void SceneDev1::Enter()
 	TEXTURE_MGR.Load("graphics/tree.png");
 	TEXTURE_MGR.Load("graphics/branch.png");
 	TEXTURE_MGR.Load("graphics/log.png");
-	TEXTURE_MGR.Load("graphics/player.png");
+	TEXTURE_MGR.Load("graphics/player1.png");
+	TEXTURE_MGR.Load("graphics/player2.png");
+	TEXTURE_MGR.Load("graphics/player3.png");
+	TEXTURE_MGR.Load("graphics/player4.png");
 	TEXTURE_MGR.Load("graphics/rip.png");
 	TEXTURE_MGR.Load("graphics/axe.png");
 	FONT_MGR.Load("fonts/KOMIKAP_.ttf");
@@ -82,7 +85,7 @@ void SceneDev1::Enter()
 	sfxTimeOut.setBuffer(SOUNDBUFFER_MGR.Get(sbIdTimeOut));
 
 	player->SetSceneGame(this);
-
+	player->SetTexIdPlayer(PLAYER_MGR.GetCharacterTexId(1));
 	Scene::Enter();
 
 	SetStatus(Status::Awake);
@@ -102,7 +105,10 @@ void SceneDev1::Exit()
 	TEXTURE_MGR.Unload("graphics/tree.png");
 	TEXTURE_MGR.Unload("graphics/branch.png");
 	TEXTURE_MGR.Unload("graphics/log.png");
-	TEXTURE_MGR.Unload("graphics/player.png");
+	TEXTURE_MGR.Unload("graphics/player1.png");
+	TEXTURE_MGR.Unload("graphics/player2.png");
+	TEXTURE_MGR.Unload("graphics/player3.png");
+	TEXTURE_MGR.Unload("graphics/player4.png");
 	TEXTURE_MGR.Unload("graphics/rip.png");
 	TEXTURE_MGR.Unload("graphics/axe.png");
 	FONT_MGR.Unload("fonts/KOMIKAP_.ttf");
@@ -188,7 +194,10 @@ void SceneDev1::SetStatus(Status newStatus)
 
 			player->Reset();
 			tree->Reset();
+			player->SetWin(false);
 		}
+		if (prevStatus == Status::Awake)
+			player->SetWin(false);
 		FRAMEWORK.SetTimeScale(1.f);
 		SetVisibleCenterMessage(false);
 		break;

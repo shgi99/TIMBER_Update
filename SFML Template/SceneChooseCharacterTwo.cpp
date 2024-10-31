@@ -106,7 +106,7 @@ void SceneChooseCharacterTwo::Update(float dt)
 
 	if (InputMgr::GetKeyDown(sf::Keyboard::Enter))
 	{
-		PLAYER_MGR.SetCharacterTexId(1, posTexId[arrowOneIdx].second);
+		PLAYER_MGR.SetCharacterTexId(2, posTexId[arrowOneIdx].second);
 		isChoosePlayerOne = !isChoosePlayerOne;
 		if (isChoosePlayerOne)
 		{
@@ -143,7 +143,7 @@ void SceneChooseCharacterTwo::Update(float dt)
 
 	if (InputMgr::GetKeyDown(sf::Keyboard::Space))
 	{
-		PLAYER_MGR.SetCharacterTexId(2, posTexId[arrowTwoIdx].second);
+		PLAYER_MGR.SetCharacterTexId(1, posTexId[arrowTwoIdx].second);
 		isChoosePlayerTwo = !isChoosePlayerTwo;
 		if (isChoosePlayerTwo)
 		{
@@ -157,6 +157,7 @@ void SceneChooseCharacterTwo::Update(float dt)
 	if (isChoosePlayerOne && isChoosePlayerTwo)
 	{
 		// æ¿ √º¿Œ¡ˆ
+		SCENE_MGR.ChangeScene(SceneIds::LocalGameScene);
 	}
 }
 

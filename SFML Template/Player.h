@@ -44,6 +44,7 @@ public:
 	void SetSide(Sides s);
 	void OnDie();
 
+	void SetTexIdPlayer(const std::string texId) { texIdPlayer = texId; }
 	void SetPosition(const sf::Vector2f& pos) override;
 	void SetScale(const sf::Vector2f& scale) override;
 	void SetOrigin(Origins preset) override;
