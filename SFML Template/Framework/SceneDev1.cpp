@@ -137,12 +137,6 @@ void SceneDev1::Update(float dt)
 { 
 	Scene::Update(dt);
 
-
-	if (InputMgr::GetKeyDown(sf::Keyboard::Space))
-	{
-		SCENE_MGR.ChangeScene(SceneIds::Dev2);
-	}
-
 	switch (currentStatus)
 	{
 	case SceneDev1::Status::Awake:
