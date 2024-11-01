@@ -38,6 +38,8 @@ void UiTimebar::SetOrigin(const sf::Vector2f& newOrigin)
 void UiTimebar::Reset()
 {
 	SetValue(1.0f);
+	shape.setOutlineColor(sf::Color::Black);
+	shape.setOutlineThickness(3);
 }
 
 void UiTimebar::Draw(sf::RenderWindow& window)

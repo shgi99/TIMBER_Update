@@ -52,11 +52,15 @@ void SceneDev1::Init()
 	player->SetPosition({ 1920.f / 2, 1080.f - 200.f });
 
 	centerMsg->text.setCharacterSize(100);
-	centerMsg->text.setFillColor(sf::Color::White);
+	centerMsg->text.setFillColor(sf::Color(50, 205, 50));
+	centerMsg->text.setOutlineColor(sf::Color(139, 69, 19));
+	centerMsg->text.setOutlineThickness(10);
 	centerMsg->SetPosition({ 1920.f / 2.f, 1080.f / 2.f });
 
 	uiScore->text.setCharacterSize(75);
-	uiScore->text.setFillColor(sf::Color::White);
+	uiScore->text.setFillColor(sf::Color(50, 205, 50));
+	uiScore->text.setOutlineColor(sf::Color(139, 69, 19));
+	uiScore->text.setOutlineThickness(10);
 	uiScore->SetPosition({ 30.f, 30.f });
 	
 	uiTimer->Set({ 500.f, 100.f }, sf::Color::Red);
@@ -256,6 +260,11 @@ void SceneDev1::UpdateGame(float dt)
 
 void SceneDev1::UpdateGameOver(float dt)
 {
+	if (InputMgr::GetKeyDown(sf::Keyboard::Escape))
+	{
+		SCENE_MGR.ChangeScene(SceneIds::Title);
+	}
+
 	if (InputMgr::GetKeyDown(sf::Keyboard::Enter))
 	{
 		SetStatus(Status::Game);

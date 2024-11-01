@@ -297,6 +297,10 @@ void LocalGameScene::UpdateGame(float dt)
 
 void LocalGameScene::UpdateGameOver(float dt)
 {
+	if (InputMgr::GetKeyDown(sf::Keyboard::Escape))
+	{
+		SCENE_MGR.ChangeScene(SceneIds::Title);
+	}
 	if (InputMgr::GetKeyDown(sf::Keyboard::Enter))
 	{
 		SetStatus(Status::Game);
@@ -325,6 +329,7 @@ void LocalGameScene::OnChop(Sides side, bool is1P)
 				skillCount[(int)Players::Player1] -= 1;
 				skillBar[(int)Players::Player1]->SetValue(skillCount[(int)Players::Player1]);
 			}
+
 		}
 		else
 		{
@@ -363,7 +368,6 @@ void LocalGameScene::OnChop(Sides side, bool is1P)
 			}
 			else if (skillCount[(int)Players::Player2] >= 15)
 			{
-				
 				players[(int)Players::Player2]->SetFever(true);
 			}
 		}
@@ -377,7 +381,7 @@ void LocalGameScene::DoSkill(bool is1P)
 		players[(int)Players::Player2]->SetStun(true);
 		stun[(int)Players::Player2]->SetActive(true);
 		stunning[(int)Players::Player2] = 0.f;
-
+		players[(int)Players::Player1]->SetFever(false);
 		skillCount[(int)Players::Player1] = 0;
 		skillBar[(int)Players::Player1]->SetValue(skillCount[(int)Players::Player1]);
 	}
@@ -386,7 +390,7 @@ void LocalGameScene::DoSkill(bool is1P)
 		players[(int)Players::Player1]->SetStun(true);
 		stun[(int)Players::Player1]->SetActive(true);
 		stunning[(int)Players::Player1] = 0.f;
-
+		players[(int)Players::Player2]->SetFever(false);
 		skillCount[(int)Players::Player2] = 0;
 		skillBar[(int)Players::Player2]->SetValue(skillCount[(int)Players::Player2]);
 	}

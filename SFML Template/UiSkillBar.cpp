@@ -36,6 +36,8 @@ void UiSkillBar::SetOrigin(const sf::Vector2f& newOrigin)
 void UiSkillBar::Reset()
 {
 	SetValue(0.f);
+	shape.setOutlineColor(sf::Color::Black);
+	shape.setOutlineThickness(3);
 }
 
 void UiSkillBar::Draw(sf::RenderWindow& window)

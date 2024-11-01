@@ -43,8 +43,6 @@ void Scene::Exit()
 
 void Scene::Update(float dt)
 {
-	std::cout << gameObjects.size() << std::endl;
-
 	for (auto obj : gameObjects)
 	{
 		if (!obj->IsActive())
